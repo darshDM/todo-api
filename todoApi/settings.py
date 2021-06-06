@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Authentication',
     'rest_framework',
     'rest_framework.authtoken', 
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
