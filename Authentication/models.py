@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
+#custom userManager for custom user model
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, password, **other_fields):
         other_fields.setdefault('is_staff', True)
@@ -29,6 +30,7 @@ class CustomAccountManager(BaseUserManager):
         user.save()
         return user
 
+#custom user as different fields are required for base user 
 class MyUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     last_name = models.CharField(max_length=150)
@@ -37,7 +39,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     objects = CustomAccountManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name','last_name']
 
     def __str__(self):
         return self.email

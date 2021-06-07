@@ -46,6 +46,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super(MyTokenObtainPairSerializer, cls).get_token(user)
 
+        #encoding extra fields into token 
         token['first_name'] = user.first_name
         token['last_name'] = user.last_name
         token['email'] = user.email
