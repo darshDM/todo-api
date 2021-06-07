@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken', 
     'gunicorn',
-    'whitenoise', 
+    
     'drf_yasg',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
